@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Metadata,SchemaField
+from metadata.models import Metadata,SchemaField
 from django.utils.translation import gettext_lazy as _
 from dal import autocomplete
 

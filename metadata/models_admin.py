@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models_form import MetadataForm
-from .models import Metadata
+from metadata.models_form import MetadataForm
+from metadata.models import Metadata
 
 class MetadataAdmin(admin.ModelAdmin):
     form = MetadataForm

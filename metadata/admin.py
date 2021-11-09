@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from .models import CBS,DataSource,Factory,Metadata,SchemaField
-from .models_admin import MetadataAdmin
+from metadata.models import CBS,DataSource,Factory,Metadata,SchemaField
+from metadata.models_admin import MetadataAdmin
 
 admin.site.register(CBS)
 admin.site.register(DataSource)
