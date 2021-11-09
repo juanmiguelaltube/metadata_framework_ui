@@ -2,6 +2,7 @@ from django.forms import ModelForm, Textarea, RadioSelect
 from .models import Metadata
 from django.utils.translation import gettext_lazy as _
 
+
 class MetadataForm(ModelForm):
     class Meta:
         model = Metadata
@@ -14,3 +15,4 @@ class MetadataForm(ModelForm):
         help_texts = {
             'params': _('Some useful help text.'),
         }
+    

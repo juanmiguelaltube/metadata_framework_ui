@@ -31,6 +31,7 @@ class SchemaField(models.Model):
     cbs = models.ForeignKey(CBS,on_delete=models.CASCADE)
     data_source = models.ForeignKey(DataSource,on_delete=models.CASCADE)
     field = models.CharField(max_length=255)
+    whitelist = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.cbs.code}:{self.data_source.code}:{self.field}"
