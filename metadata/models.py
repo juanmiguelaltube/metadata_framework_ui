@@ -40,13 +40,15 @@ class SchemaField(models.Model):
 
 
 class Metadata(models.Model):
-    schema_field = models.ForeignKey(SchemaField,on_delete=models.CASCADE)
+    field = models.ForeignKey(SchemaField,on_delete=models.CASCADE)
     factory = models.ForeignKey(Factory,on_delete=models.CASCADE)
-    params = models.CharField(max_length=255)
+    condition = models.CharField(max_length=255, blank=True)
+    format_in = models.CharField(max_length=255,blank=True)
+    format_out = models.CharField(max_length=255,blank=True)
     
     class Meta:
-        ordering = ["schema_field"]
+        ordering = ["field"]
         verbose_name_plural = "Metadata"
 
     def __str__(self):
-        return f"{self.schema_field}"
+        return f"{self.field}:{self.factory}"

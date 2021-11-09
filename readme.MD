@@ -4,10 +4,10 @@ https://www.django-rest-framework.org/tutorial/quickstart/#quickstart
 
 
 ```bash
-sudo chown -R $USER:$USER .
+sudo docker-compose build web
 ```
 ```bash
-sudo docker-compose build web
+sudo chown -R $USER:$USER .
 ```
 ```bash
 docker-compose run web python manage.py migrate
