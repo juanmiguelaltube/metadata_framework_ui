@@ -31,7 +31,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'ajax_select',
+    'dal',
+    'dal_select2',
     'metadata.apps.MetadataConfig',
     'django.contrib.admin',
     'django.contrib.auth',

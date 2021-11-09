@@ -1,18 +1,27 @@
-from django.forms import ModelForm, Textarea, RadioSelect
-from .models import Metadata
+from django import forms 
+from .models import Metadata,SchemaField
 from django.utils.translation import gettext_lazy as _
+from dal import autocomplete
 
 
-class MetadataForm(ModelForm):
+class MetadataForm(forms.ModelForm):
+    schema_field = forms.ModelChoiceField(
+        queryset=SchemaField.objects.all(),
+        widget=autocomplete.ModelSelect2(url='field-autocomplete',
+            attrs={'data-placeholder': 'Search...',
+                #'data-minimum-input-length': 3,
+            },
+        )
+    )
+    
     class Meta:
         model = Metadata
         fields = '__all__'
         # exclude = ['params']
         # widgets = {
-        #     'schema_field': RadioSelect(),
+        #     'schema_field': autocomplete.ModelSelect2(url='field-autocomplete')
         # }
-
         help_texts = {
-            'params': _('Some useful help text.'),
+            'params': _('Some useful help text indeed.'),
         }
     
