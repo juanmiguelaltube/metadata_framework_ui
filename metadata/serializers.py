@@ -5,4 +5,4 @@ from rest_framework import serializers
 class MetadataSerializer(serializers.ModelSerializer):
     class Meta:
         model = Metadata
-        fields = ['schema_field','factory','params']
+        fields = ['__all__']

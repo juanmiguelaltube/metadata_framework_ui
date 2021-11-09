@@ -1,6 +1,8 @@
 from django.db import models
 from django import forms 
 from django.utils.translation import gettext_lazy as _
+from pygments.lexers import get_all_lexers
+from pygments.styles import get_all_styles
 
 
 class CBS(models.Model):
