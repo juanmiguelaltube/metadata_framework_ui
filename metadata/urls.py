@@ -14,7 +14,7 @@ urlpatterns = [
         name='field-autocomplete',
     ),
     path('api/metadata/', views.MetadataList.as_view()),
-    path('api/metadata/<int:pk_field>/<int:pk_factory>/', views.MetadataDetail.as_view()),
+    path('api/metadata/<int:pk>/', views.MetadataDetail.as_view()),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

@@ -44,26 +44,26 @@ class MetadataDetail(APIView):
     """
     Retrieve, update or delete a metadata instance.
     """
-    def get_object(self, pk_field, pk_factory):
+    def get_object(self, pk):
         try:
-            return Metadata.objects.get(schema_field=pk_field, factory=pk_factory)
+            return Metadata.objects.get(id=pk)
         except Metadata.DoesNotExist:
             raise Http404
 
-    def get(self, request, pk_field, pk_factory, format=None):
-        metadata = self.get_object(pk_field=pk_field, pk_factory=pk_factory)
+    def get(self, request, pk, format=None):
+        metadata = self.get_object(pk=pk)
         serializer = MetadataSerializer(metadata)
         return Response(serializer.data)
 
-    def put(self, request, pk_field, pk_factory, format=None):
-        metadata = self.get_object(pk_field=pk_field, pk_factory=pk_factory)
+    def put(self, request, pk, format=None):
+        metadata = self.get_object(pk=pk)
         serializer = MetadataSerializer(metadata, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, pk_field, pk_factory, format=None):
-        metadata = self.get_object(pk_field=pk_field, pk_factory=pk_factory)
+    def delete(self, request,pk, format=None):
+        metadata = self.get_object(pk=pk)
         metadata.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)        
