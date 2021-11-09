@@ -19,7 +19,7 @@ class SchemaFieldAutocomplete(autocomplete.Select2QuerySetView):
         qs = SchemaField.objects.all()
 
         if self.q:
-            qs = qs.filter(field__istartswith=self.q)
+            qs = qs.filter(field__icontains=self.q)
 
         return qs
 

@@ -5,7 +5,7 @@ from dal import autocomplete
 
 
 class MetadataForm(forms.ModelForm):
-    schema_field = forms.ModelChoiceField(
+    field = forms.ModelChoiceField(
         queryset=SchemaField.objects.all(),
         widget=autocomplete.ModelSelect2(url='field-autocomplete',
             attrs={'data-placeholder': 'Search...',
@@ -24,4 +24,3 @@ class MetadataForm(forms.ModelForm):
         help_texts = {
             'params': _('Some useful help text indeed.'),
         }
-    
