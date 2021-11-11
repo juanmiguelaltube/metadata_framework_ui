@@ -3,30 +3,31 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 class CBS(models.Model):
-    code = models.CharField(max_length=3)
+    id = models.CharField(primary_key=True,max_length=3)
     name = models.CharField(max_length=100)
     
     class Meta:
-        ordering = ["code"]
+        ordering = ["id"]
         verbose_name_plural = "CBS"
 
     def __str__(self):
-        return f"{self.code}:{self.name}"
+        return f"{self.id}:{self.name}"
 
 class DataSource(models.Model):
-    code = models.CharField(max_length=50)
+    id = models.CharField(primary_key=True,max_length=50)
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f"{self.code}:{self.name}"
+        return f"{self.id}:{self.name}"
 
 class Factory(models.Model):
-    factory_name = models.CharField(max_length=100)
+    id = models.CharField(primary_key=True,max_length=100)
+    description = models.CharField(max_length=100, blank=True)
     
     def __str__(self):
-        return self.factory_name
+        return self.id
     class Meta:
-        ordering = ["factory_name"]
+        ordering = ["id"]
         verbose_name_plural = "Factories"
 
 class SchemaField(models.Model):
@@ -36,7 +37,7 @@ class SchemaField(models.Model):
     whitelist = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.cbs.code}:{self.data_source.code}:{self.field}"
+        return f"{self.cbs.id}:{self.data_source.id}:{self.field}"
 
     class Meta:
         ordering = ["field"]

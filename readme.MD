@@ -10,10 +10,13 @@ sudo docker-compose build web
 sudo chown -R $USER:$USER .
 ```
 ```bash
-docker-compose run web python manage.py migrate
+docker-compose run web python manage.py createsuperuser --email admin@example.com --username admin
 ```
 ```bash
-docker-compose run web python manage.py createsuperuser --email admin@example.com --username admin
+docker-compose run web python manage.py makemigrations
+```
+```bash
+docker-compose run web python manage.py migrate
 ```
 ```bash
 docker-compose up

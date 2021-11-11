@@ -23,21 +23,7 @@ class SchemaFieldSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MetadataSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Metadata
-        fields = '__all__'
-
-
-class SchemaFieldFormattedSerializer(serializers.ModelSerializer):
-    cbs = serializers.SlugRelatedField(many=False,read_only=True,slug_field='code')
-    data_source = serializers.SlugRelatedField(many=False,read_only=True,slug_field='code')
-    class Meta:
-        model = models.SchemaField
-        fields = '__all__'
-
-class MetadataFormattedSerializer(serializers.ModelSerializer):
-    field = SchemaFieldFormattedSerializer(many=False, read_only=True)
-    factory = serializers.StringRelatedField(many=False)
+    field = SchemaFieldSerializer(many=False, read_only=True)
 
     class Meta:
         model = models.Metadata

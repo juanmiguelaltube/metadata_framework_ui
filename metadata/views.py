@@ -29,7 +29,7 @@ class MetadataList(APIView):
     """
     def get(self, request, format=None):
         metadatas = models.Metadata.objects.all()
-        serializer = serializers.MetadataFormattedSerializer(metadatas, many=True)
+        serializer = serializers.MetadataSerializer(metadatas, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -52,7 +52,7 @@ class MetadataDetail(APIView):
 
     def get(self, request, pk, format=None):
         metadata = self.get_object(pk=pk)
-        serializer = serializers.MetadataFormattedSerializer(metadata)
+        serializer = serializers.MetadataSerializer(metadata)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
