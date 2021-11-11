@@ -23,6 +23,11 @@ class SchemaFieldSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MetadataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Metadata
+        fields = '__all__'
+
+class MetadataDisplaySerializer(serializers.ModelSerializer):
     field = SchemaFieldSerializer(many=False, read_only=True)
 
     class Meta:
