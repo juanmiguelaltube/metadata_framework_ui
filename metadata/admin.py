@@ -1,9 +1,9 @@
 import metadata.models as models
 from django.contrib import admin
-from metadata.models_admin import MetadataAdmin
+from metadata.models_admin import MetadataAdmin, SchemaFieldAdmin
 
 admin.site.register(models.CBS)
 admin.site.register(models.DataSource)
 admin.site.register(models.Factory)
 admin.site.register(models.Metadata, MetadataAdmin)
-admin.site.register(models.SchemaField)
+admin.site.register(models.SchemaField, SchemaFieldAdmin)

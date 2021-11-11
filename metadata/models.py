@@ -1,9 +1,6 @@
 from django.db import models
 from django import forms 
 from django.utils.translation import gettext_lazy as _
-from pygments.lexers import get_all_lexers
-from pygments.styles import get_all_styles
-
 
 class CBS(models.Model):
     code = models.CharField(max_length=3)
@@ -28,6 +25,9 @@ class Factory(models.Model):
     
     def __str__(self):
         return self.factory_name
+    class Meta:
+        ordering = ["factory_name"]
+        verbose_name_plural = "Factories"
 
 class SchemaField(models.Model):
     cbs = models.ForeignKey(CBS,on_delete=models.CASCADE)
@@ -38,6 +38,9 @@ class SchemaField(models.Model):
     def __str__(self):
         return f"{self.cbs.code}:{self.data_source.code}:{self.field}"
 
+    class Meta:
+        ordering = ["field"]
+        verbose_name_plural = "Schema Fields"
 
 class Metadata(models.Model):
     field = models.ForeignKey(SchemaField,on_delete=models.CASCADE)
@@ -48,7 +51,7 @@ class Metadata(models.Model):
     
     class Meta:
         ordering = ["field"]
-        verbose_name_plural = "Metadata"
+        verbose_name_plural = "Metadatas"
 
     def __str__(self):
         return f"{self.field}:{self.factory}"
