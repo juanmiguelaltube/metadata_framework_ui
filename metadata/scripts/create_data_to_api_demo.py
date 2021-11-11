@@ -1,5 +1,17 @@
 import requests
 
+#CREATE SCHEMA FIELD 
+data =  {"field": "root-element-array-primitive",
+        "whitelist": True,
+        "cbs": "bnl",
+        "data_source": "ga"
+    }
+
+url = "http://localhost:8000/api/schema-field/"
+print(f"creating new schema field from {url}")
+response = requests.post(url=url,json=data) #POST for creation
+print(response.status_code)
+print(response.text)
 
 
 #CREATE METADATA 

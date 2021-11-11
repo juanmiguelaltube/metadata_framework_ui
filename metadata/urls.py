@@ -15,7 +15,8 @@ urlpatterns = [
     ),
     path('api/metadata/', views.MetadataList.as_view()),
     path('api/metadata/<int:pk>/', views.MetadataDetail.as_view()),
-    path('api/schema/', views.SchemaFieldList.as_view()),
+    path('api/schema-field/', views.SchemaFieldList.as_view()),
+    path('api/schema-field/<int:pk>/', views.SchemaFieldDetail.as_view()),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

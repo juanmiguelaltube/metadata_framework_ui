@@ -53,6 +53,7 @@ class Metadata(models.Model):
     class Meta:
         ordering = ["field"]
         verbose_name_plural = "Metadatas"
+        unique_together = ['field', 'factory']
 
     def __str__(self):
         return f"{self.field}:{self.factory}"
